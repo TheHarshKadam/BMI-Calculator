@@ -4,10 +4,6 @@ import 'package:bmi_calculator/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  // ignore: non_constant_identifier_names
-  // ignore: unused_element
-  // ignore: non_constant_identifier_names
-  // ignore: unused_element
   runApp(MyApp()) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
