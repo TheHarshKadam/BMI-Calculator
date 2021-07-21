@@ -1,15 +1,12 @@
 import 'dart:async';
-
 import 'package:bmi_calculator/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp()) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: splash_screen(),
-    );
-  }
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: splash_screen(),
+  ));
 }
 
 class splash_screen extends StatefulWidget {
@@ -28,6 +25,10 @@ class _splash_screenState extends State<splash_screen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+        color: Colors.deepPurple[900],
+        child: Center(
+          child: Text("SPLASH SCREEN"),
+        ));
   }
 }
