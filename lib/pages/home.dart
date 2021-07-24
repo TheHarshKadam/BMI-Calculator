@@ -8,7 +8,7 @@ class home extends StatefulWidget {
 }
 
 const activeCardColor = Color(0xFF27104b);
-const inactiveCardColor = Color(0xFF3b1e52);
+const inactiveCardColor = Color(0xFF1f0f38);
 enum Gender { Male, Female }
 
 class _homeState extends State<home> {
