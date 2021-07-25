@@ -18,10 +18,10 @@ enum Gender { Male, Female }
 
 class _homeState extends State<home> {
   Gender selectedGender = Gender.Male;
+  int height = 200;
 
   @override
   Widget build(BuildContext context) {
-    var height;
     print(height);
     return Scaffold(
         backgroundColor: Color(0xFF130726),
@@ -83,7 +83,7 @@ class _homeState extends State<home> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.baseline,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
@@ -103,9 +103,12 @@ class _homeState extends State<home> {
                         thumbColor: Color(0xFFEB1555),
                         overlayColor: Color(0x29EB1555),
                         thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0, elevation: 0.0),
                         overlayShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 20.0),
+                            RoundSliderThumbShape(
+                              enabledThumbRadius: 15.0,
+                              elevation: 0.0
+                            ),
                       ),
                       child: Slider(
                         value: height.toDouble(),
