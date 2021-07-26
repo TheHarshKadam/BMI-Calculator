@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bmi_calculator/common/icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/common/card_widget.dart';
@@ -16,13 +18,21 @@ const numTextStyle = TextStyle(
 );
 enum Gender { Male, Female }
 
+void fastincWeight() {
+
+}
+
 class _homeState extends State<home> {
   Gender selectedGender = Gender.Male;
   int height = 200;
+  int weight = 30;
+  int age = 34;
 
   @override
   Widget build(BuildContext context) {
     print(height);
+    print(age);
+    print(weight);
     return Scaffold(
         backgroundColor: Color(0xFF130726),
         appBar: AppBar(
@@ -102,13 +112,10 @@ class _homeState extends State<home> {
                         inactiveTrackColor: Color(0xFF1f0f38),
                         thumbColor: Color(0xFFEB1555),
                         overlayColor: Color(0x29EB1555),
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0, elevation: 0.0),
-                        overlayShape:
-                            RoundSliderThumbShape(
-                              enabledThumbRadius: 15.0,
-                              elevation: 0.0
-                            ),
+                        thumbShape: RoundSliderThumbShape(
+                            enabledThumbRadius: 13.0, elevation: 0.0),
+                        overlayShape: RoundSliderThumbShape(
+                            enabledThumbRadius: 13.0, elevation: 0.0),
                       ),
                       child: Slider(
                         value: height.toDouble(),
@@ -128,9 +135,126 @@ class _homeState extends State<home> {
             Expanded(
               child: Row(
                 children: [
-                  Expanded(child: reusable_card(colors: activeCardColor)),
                   Expanded(
-                    child: reusable_card(colors: activeCardColor),
+                      child: reusable_card(
+                          customchild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "WEIGHT",
+                                style: labelStyle,
+                              ),
+                              Text(
+                                weight.toString(),
+                                style: numTextStyle,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        if (weight > 15) {
+                                          weight--;
+                                        }
+                                      });
+                                    },
+                                    onLongPress: () {
+                                      
+                                    },
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12.0),
+                                        primary: Color(0xFF381769)),
+                                  ),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        weight++;
+                                      });
+                                    },
+                                    onLongPress: () {
+                                      setState(() {
+                                        weight++;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12.0),
+                                        primary: Color(0xFF381769)),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          colors: activeCardColor)),
+                  Expanded(
+                    child: reusable_card(
+                        customchild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "AGE",
+                              style: labelStyle,
+                            ),
+                            Text(
+                              age.toString(),
+                              style: numTextStyle,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      if (age > 1) {
+                                        age--;
+                                      }
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: Colors.white,
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                      shape: CircleBorder(),
+                                      padding: EdgeInsets.all(12.0),
+                                      primary: Color(0xFF381769)),
+                                ),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                      shape: CircleBorder(),
+                                      padding: EdgeInsets.all(12.0),
+                                      primary: Color(0xFF381769)),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        colors: activeCardColor),
                   )
                 ],
               ),
