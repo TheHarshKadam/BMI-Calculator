@@ -16,6 +16,7 @@ const numTextStyle = TextStyle(
   fontSize: 60.0,
   fontWeight: FontWeight.w900,
 );
+
 enum Gender { Male, Female }
 
 class _homeState extends State<home> {
@@ -23,12 +24,86 @@ class _homeState extends State<home> {
   int height = 200;
   int weight = 30;
   int age = 34;
+  bool _isPressed = false;
+  bool _loopActive = false;
+
+  void _incfastWeight() async {
+    if (_loopActive) {
+      return;
+    }
+    _loopActive = true;
+
+    while (_isPressed) {
+      setState(() {
+        weight++;
+      });
+      await Future.delayed(Duration(
+        milliseconds: 100,
+      ));
+    }
+    _loopActive = false;
+  }
+
+  void _decfastWeight() async {
+    if (_loopActive) {
+      return;
+    }
+    _loopActive = true;
+
+    while (_isPressed) {
+      setState(() {
+        if (weight > 15) {
+          weight--;
+        }
+      });
+      await Future.delayed(Duration(
+        milliseconds: 100,
+      ));
+    }
+    _loopActive = false;
+  }
+
+  void _incfastAge() async {
+    if (_loopActive) {
+      return;
+    }
+    _loopActive = true;
+
+    while (_isPressed) {
+      setState(() {
+        age++;
+      });
+      await Future.delayed(Duration(
+        milliseconds: 100,
+      ));
+    }
+    _loopActive = false;
+  }
+
+  void _decfastAge() async {
+    if (_loopActive) {
+      return;
+    }
+    _loopActive = true;
+
+    while (_isPressed) {
+      setState(() {
+        if (age > 1) {
+          age--;
+        }
+      });
+      await Future.delayed(Duration(
+        milliseconds: 100,
+      ));
+    }
+    _loopActive = false;
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(height);
-    print(age);
-    print(weight);
+    // print(height);
+    // print(age);
+    // print(weight);
     return Scaffold(
         backgroundColor: Color(0xFF130726),
         appBar: AppBar(
@@ -147,46 +222,46 @@ class _homeState extends State<home> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        if (weight > 15) {
-                                          weight--;
-                                        }
-                                      });
+                                  Listener(
+                                    onPointerDown: (details) {
+                                      _isPressed = true;
+                                      _decfastWeight();
                                     },
-                                    onLongPress: () {},
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.white,
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12.0),
-                                        primary: Color(0xFF381769)),
+                                    onPointerUp: (details) {
+                                      _isPressed = false;
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF381769),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        padding: EdgeInsets.all(15.0),
+                                        child: Icon(
+                                          Icons.remove,
+                                          color: Colors.white,
+                                        )),
                                   ),
                                   SizedBox(
-                                    width: 10.0,
+                                    width: 14.0,
                                   ),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        weight++;
-                                      });
+                                  Listener(
+                                    onPointerDown: (details) {
+                                      _isPressed = true;
+                                      _incfastWeight();
                                     },
-                                    onLongPress: () {
-                                      setState(() {
-                                        weight++;
-                                      });
+                                    onPointerUp: (details) {
+                                      _isPressed = false;
                                     },
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12.0),
-                                        primary: Color(0xFF381769)),
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF381769),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        padding: EdgeInsets.all(15.0),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        )),
                                   ),
                                 ],
                               )
@@ -209,40 +284,46 @@ class _homeState extends State<home> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      if (age > 1) {
-                                        age--;
-                                      }
-                                    });
+                                Listener(
+                                  onPointerDown: (details) {
+                                    _isPressed = true;
+                                    _decfastAge();
                                   },
-                                  child: Icon(
-                                    Icons.remove,
-                                    color: Colors.white,
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: EdgeInsets.all(12.0),
-                                      primary: Color(0xFF381769)),
+                                  onPointerUp: (details) {
+                                    _isPressed = false;
+                                  },
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF381769),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      padding: EdgeInsets.all(15.0),
+                                      child: Icon(
+                                        Icons.remove,
+                                        color: Colors.white,
+                                      )),
                                 ),
                                 SizedBox(
-                                  width: 10.0,
+                                  width: 14.0,
                                 ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      age++;
-                                    });
+                                Listener(
+                                  onPointerDown: (details) {
+                                    _isPressed = true;
+                                    _incfastAge();
                                   },
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: EdgeInsets.all(12.0),
-                                      primary: Color(0xFF381769)),
+                                  onPointerUp: (details) {
+                                    _isPressed = false;
+                                  },
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF381769),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      padding: EdgeInsets.all(15.0),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      )),
                                 ),
                               ],
                             )
