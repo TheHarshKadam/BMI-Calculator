@@ -334,6 +334,27 @@ class _homeState extends State<home> {
                 ],
               ),
             ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/result');
+              },
+              child: Container(
+                child: Center(
+                  child: Text("CALCULATE!",
+                      style: TextStyle(color: Colors.white, fontSize: 30.0)),
+                ),
+                margin: EdgeInsets.only(top: 10.0),
+                height: 80.0,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Color(0xFFEB1555),
+                    borderRadius:
+                        BorderRadius.vertical(
+                          top: Radius.circular(18.0)
+                        )
+                ),
+              ),
+            )
           ],
         ));
   }
