@@ -18,10 +18,6 @@ const numTextStyle = TextStyle(
 );
 enum Gender { Male, Female }
 
-void fastincWeight() {
-
-}
-
 class _homeState extends State<home> {
   Gender selectedGender = Gender.Male;
   int height = 200;
@@ -159,9 +155,7 @@ class _homeState extends State<home> {
                                         }
                                       });
                                     },
-                                    onLongPress: () {
-                                      
-                                    },
+                                    onLongPress: () {},
                                     child: Icon(
                                       Icons.remove,
                                       color: Colors.white,
