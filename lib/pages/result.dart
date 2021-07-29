@@ -1,27 +1,102 @@
 import 'package:bmi_calculator/common/icon_widget.dart';
+import 'package:bmi_calculator/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/common/card_widget.dart';
 
-class ResultPage extends StatefulWidget {
+class ResultPage extends StatelessWidget {
+  
+  ResultPage({ required this.bmiResult, required this.finalresult,required this.conclusion});
 
-  @override
-  _ResultPageState createState() => _ResultPageState();
-}
+  final String bmiResult;
+  final String finalresult;
+  final String conclusion;
 
-class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF130726),
       appBar: AppBar(
-         backgroundColor: Color(0xFF130726),
-         elevation: 0.0,
-          centerTitle: true,
-          title: Text(
-           "BMI Calculator",
-           style: TextStyle(
-            color: Colors.white,
-            )
+        backgroundColor: Color(0xFF130726),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text("BMI Calculator",
+            style: TextStyle(
+              color: Colors.white,
+            )),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Center(
+            child: Text(
+              "Your Result",
+              style: TextStyle(
+                fontSize: 45.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
+          Expanded(
+            flex: 5,
+            child: reusable_card(
+              colors: activeCardColor,
+              customchild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        bmiResult,
+                        style: TextStyle(
+                          color: Color(0xFF24D876),
+                          fontSize: 22.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      finalresult,
+                      style: TextStyle(
+                          fontSize: 100.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      conclusion,
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              child: Center(
+                child: Text("RE-CALCULATE!",
+                    style: TextStyle(color: Colors.black87, fontSize: 30.0)),
+              ),
+              margin: EdgeInsets.only(top: 10.0),
+              height: 80.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Color(0xFFEB1555),
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(18.0))),
+            ),
+          )
+        ],
       ),
     );
   }
