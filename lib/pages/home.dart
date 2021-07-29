@@ -1,8 +1,9 @@
 import 'dart:async';
-
 import 'package:bmi_calculator/common/icon_widget.dart';
+import 'package:bmi_calculator/pages/result.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/common/card_widget.dart';
+import 'package:bmi_calculator/brain/calculator.dart';
 
 class home extends StatefulWidget {
   @override
@@ -336,12 +337,20 @@ class _homeState extends State<home> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/result');
+                Calculator calc = Calculator(height: height, weight: weight);
+                Navigator.pushNamed(
+                  context, '/result',
+                  arguments: ResultPage(
+                    bmiResult: calc.calculateBMI(),
+                    finalresult: calc.finalResult(),
+                    conclusion: calc.getConclusion(),
+                  )
+                );
               },
               child: Container(
                 child: Center(
                   child: Text("CALCULATE!",
-                      style: TextStyle(color: Colors.white, fontSize: 30.0)),
+                      style: TextStyle(color: Colors.black87, fontSize: 30.0)),
                 ),
                 margin: EdgeInsets.only(top: 10.0),
                 height: 80.0,
@@ -349,10 +358,7 @@ class _homeState extends State<home> {
                 decoration: BoxDecoration(
                     color: Color(0xFFEB1555),
                     borderRadius:
-                        BorderRadius.vertical(
-                          top: Radius.circular(18.0)
-                        )
-                ),
+                        BorderRadius.vertical(top: Radius.circular(18.0))),
               ),
             )
           ],
