@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'card_widget.dart';
+import 'package:sizer/sizer.dart';
 
 const labelStyle = TextStyle(
   fontSize: 18.0,
@@ -23,7 +24,7 @@ class iconWidget extends StatelessWidget {
         SizedBox(height: 15.0,),
         Text(
          "$label",
-          style: labelStyle,
+          style: labelStyle.copyWith(fontSize: 20.0.sp,),
         )
       ],
     );
