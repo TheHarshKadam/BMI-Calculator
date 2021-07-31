@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator/common/card_widget.dart';
 import 'package:bmi_calculator/brain/calculator.dart';
 import 'package:flutter/services.dart';
+import 'package:sizer/sizer.dart';
 
 class home extends StatefulWidget {
   @override
@@ -54,7 +55,7 @@ class _homeState extends State<home> {
 
     while (_isPressed) {
       setState(() {
-        if (weight > 15) {
+        if (weight > 20) {
           weight--;
         }
       });
@@ -112,7 +113,12 @@ class _homeState extends State<home> {
           backgroundColor: Color(0xFF130726),
           elevation: 0.0,
           centerTitle: true,
-          title: Text("BMI Calculator"),
+          title: Text(
+            "BMI Calculator",
+            style: TextStyle(
+              fontSize: 20.0.sp,
+            ),
+          ),
         ),
         body: Column(
           children: [
@@ -168,7 +174,9 @@ class _homeState extends State<home> {
                   children: [
                     Text(
                       "HEIGHT",
-                      style: labelStyle,
+                      style: labelStyle.copyWith(
+                        fontSize: 20.0.sp,
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -181,7 +189,9 @@ class _homeState extends State<home> {
                         ),
                         Text(
                           'cm',
-                          style: labelStyle,
+                          style: labelStyle.copyWith(
+                            fontSize: 20.0.sp,
+                          ),
                         )
                       ],
                     ),
@@ -221,7 +231,9 @@ class _homeState extends State<home> {
                             children: [
                               Text(
                                 "WEIGHT",
-                                style: labelStyle,
+                                style: labelStyle.copyWith(
+                                  fontSize: 20.0.sp,
+                                ),
                               ),
                               Text(
                                 weight.toString(),
@@ -243,7 +255,7 @@ class _homeState extends State<home> {
                                           color: Color(0xFF381769),
                                           shape: BoxShape.circle,
                                         ),
-                                        padding: EdgeInsets.all(15.0),
+                                        padding: EdgeInsets.all(20.0),
                                         child: Icon(
                                           Icons.remove,
                                           color: Colors.white,
@@ -265,7 +277,7 @@ class _homeState extends State<home> {
                                           color: Color(0xFF381769),
                                           shape: BoxShape.circle,
                                         ),
-                                        padding: EdgeInsets.all(15.0),
+                                        padding: EdgeInsets.all(20.0),
                                         child: Icon(
                                           Icons.add,
                                           color: Colors.white,
@@ -283,7 +295,9 @@ class _homeState extends State<home> {
                           children: [
                             Text(
                               "AGE",
-                              style: labelStyle,
+                              style: labelStyle.copyWith(
+                                fontSize: 20.0.sp,
+                              ),
                             ),
                             Text(
                               age.toString(),
@@ -305,7 +319,7 @@ class _homeState extends State<home> {
                                         color: Color(0xFF381769),
                                         shape: BoxShape.circle,
                                       ),
-                                      padding: EdgeInsets.all(15.0),
+                                      padding: EdgeInsets.all(20.0),
                                       child: Icon(
                                         Icons.remove,
                                         color: Colors.white,
@@ -327,7 +341,7 @@ class _homeState extends State<home> {
                                         color: Color(0xFF381769),
                                         shape: BoxShape.circle,
                                       ),
-                                      padding: EdgeInsets.all(15.0),
+                                      padding: EdgeInsets.all(20.0),
                                       child: Icon(
                                         Icons.add,
                                         color: Colors.white,
