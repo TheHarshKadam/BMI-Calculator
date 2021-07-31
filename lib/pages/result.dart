@@ -3,6 +3,7 @@ import 'package:bmi_calculator/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/common/card_widget.dart';
 import 'package:flutter/services.dart';
+import 'package:sizer/sizer.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage(
@@ -23,6 +24,7 @@ class ResultPage extends StatelessWidget {
         title: Text("BMI Calculator",
             style: TextStyle(
               color: Colors.white,
+              fontSize: 20.0.sp,
             )),
       ),
       body: Column(
@@ -53,7 +55,7 @@ class ResultPage extends StatelessWidget {
                         finalresult,
                         style: TextStyle(
                           color: Color(0xFF24D876),
-                          fontSize: 22.0,
+                          fontSize: 20.0.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -74,7 +76,7 @@ class ResultPage extends StatelessWidget {
                       child: Text(
                         conclusion,
                         style: TextStyle(
-                          fontSize: 18.0,
+                          fontSize: 20.0.sp,
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
