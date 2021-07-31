@@ -4,6 +4,7 @@ import 'package:bmi_calculator/pages/result.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/common/card_widget.dart';
 import 'package:bmi_calculator/brain/calculator.dart';
+import 'package:flutter/services.dart';
 
 class home extends StatefulWidget {
   @override
@@ -121,6 +122,9 @@ class _homeState extends State<home> {
                   Expanded(
                     child: reusable_card(
                       onPress: () {
+                        Feedback.forTap(context);
+                        Clipboard.setData(ClipboardData());
+                        HapticFeedback.lightImpact();
                         setState(() {
                           selectedGender = Gender.Male;
                         });
@@ -137,6 +141,9 @@ class _homeState extends State<home> {
                   Expanded(
                     child: reusable_card(
                       onPress: () {
+                        Feedback.forTap(context);
+                        Clipboard.setData(ClipboardData());
+                        HapticFeedback.lightImpact();
                         setState(() {
                           selectedGender = Gender.Female;
                         });
@@ -182,7 +189,7 @@ class _homeState extends State<home> {
                       data: SliderTheme.of(context).copyWith(
                         activeTrackColor: Colors.white,
                         inactiveTrackColor: Color(0xFF1f0f38),
-                        thumbColor: Color(0xFFEB1555),
+                        thumbColor: Color(0xFFEE4266),
                         overlayColor: Color(0x29EB1555),
                         thumbShape: RoundSliderThumbShape(
                             enabledThumbRadius: 13.0, elevation: 0.0),
@@ -337,26 +344,30 @@ class _homeState extends State<home> {
             ),
             GestureDetector(
               onTap: () {
+                Feedback.forTap(context);
+                Clipboard.setData(ClipboardData());
+                HapticFeedback.lightImpact();
                 Calculator calc = Calculator(height: height, weight: weight);
-                Navigator.pushNamed(
-                  context, '/result',
-                  arguments: ResultPage(
-                    bmiResult: calc.calculateBMI(),
-                    finalresult: calc.finalResult(),
-                    conclusion: calc.getConclusion(),
-                  )
-                );
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                          bmiResult: calc.calculateBMI(),
+                          finalresult: calc.finalResult(),
+                          conclusion: calc.getConclusion(),
+                        )));
               },
               child: Container(
                 child: Center(
                   child: Text("CALCULATE!",
-                      style: TextStyle(color: Colors.black87, fontSize: 30.0)),
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold)),
                 ),
                 margin: EdgeInsets.only(top: 10.0),
                 height: 80.0,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: Color(0xFFEB1555),
+                    color: Color(0xFFEE4266),
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(18.0))),
               ),
