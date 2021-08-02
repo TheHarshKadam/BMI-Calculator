@@ -2,7 +2,7 @@
 
 Body Mass Index Calculator
 
-<img src = "https://user-images.githubusercontent.com/77354987/127733571-34db338c-62be-417b-97b2-75384313df45.gif" width="350" height="730">
+<img src = "https://user-images.githubusercontent.com/77354987/127733571-34db338c-62be-417b-97b2-75384313df45.gif" alt = "DEMO of BMI CALC" width="350" height="730">
 
 ## Get Started
 
